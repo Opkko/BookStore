@@ -3,6 +3,8 @@
  */
 package com.bookstore.BookStore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,6 +85,23 @@ public class BookStoreController {
         try { 
         	bookService.deleteBook(isbn, user);
         	return ResponseEntity.ok().build();
+        }
+        catch (Exception e) {
+        	// for scalability can change to logging using apache
+        	System.out.println(e.getMessage());
+        }
+		return ResponseEntity.notFound().build();
+            
+        
+    }
+    
+	// get book 
+    @PostMapping("/listBook")
+    public ResponseEntity<List<Book>> saveBook(@RequestBody String option, String value) {
+        
+        try { 
+        	List<Book> books = bookService.listOfBooks(option, value);
+        	return ResponseEntity.ok(books);
         }
         catch (Exception e) {
         	// for scalability can change to logging using apache
