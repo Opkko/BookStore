@@ -1,12 +1,12 @@
 # BookStore
 
-## Functionalities
-
-### GetBook 
+## Functionalities :
+------------------------
+### **GetBook** 
 --- 
-`
+```
 @GetMapping("/getBook/{id}")
-`
+```
 Get a book by its id(isbn)
 ---
 
